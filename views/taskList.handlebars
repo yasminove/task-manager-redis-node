@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            
+            .del:checked + span {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+<div class="container mt-4">
+      <div class="card card-body">
+    <form action="/task/add" method="POST">
+        <div class="form-group">
+            <input type="text" class="form-control" style="width:75%; display: inline-block;" name="task" placeholder="Add a task"> 
+            <button class="btn btn-primary">Add</button>
+        </div>
+    </form>
+   
+<ul style="list-style: none;">
+    <form method="POST" action="/task/delete">
+  {{#each tasks}}
+    
+   <li>
+       
+        <input type="checkbox" class="del" name="tasks" value="{{this}}">
+       
+       <span>{{this}}</span>
+       </li>
+       
+   {{/each}}
+   <button class="btn btn-danger mt-4">Remove</button>
+    </form>
+</ul>
+ </div>
+ </div>
+
+    <div class="container">
+        <div class="card card-body mt-4">
+            <h3>Next Bussiness Call</h3>
+            Name:   {{call.name}} <br>
+            Phone:   {{call.phone}} <br>
+            Email:   {{call.email}} <br>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="card card-body">
+        <h3>Edit Next Call</h3>
+        <form method="POST" action="/call/edit">
+            <div class="form-group">
+                <label>Name: </label>
+                <input type="text" class="form-control" name="name">
+                <label>Phone: </label>
+                <input type="text" class="form-control" name="phone">
+                <label>Email: </label>
+                <input type="text" class="form-control" name="email">
+                <button class="btn btn-primary mt-4">Edit</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>
